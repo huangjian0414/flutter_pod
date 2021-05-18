@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'huangjian0414' => 'jianhuangbest@gmail.com' }
-  s.source           = { :git => 'https://github.com/huangjian0414/flutter_pod', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/huangjian0414/flutter_pod', :tag => s.version }
   
 
   s.ios.deployment_target = '9.0'
