@@ -54,3 +54,4 @@ mkdir $libpath
 cp -r $out $libpath
 
 echo "复制库文件到: $libpath"
+rm -rf $out
