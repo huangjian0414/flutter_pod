@@ -2,11 +2,11 @@
 
 Pod::Spec.new do |s|
   s.name             = 'flutter_pod'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'flutter_pod'
 
   s.description      = <<-DESC
-        init
+        原生与flutter交互
                        DESC
 
   s.homepage         = 'https://github.com/huangjian0414/flutter_pod'
