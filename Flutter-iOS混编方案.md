@@ -284,4 +284,24 @@ end
 
 **优化**
 
-- 打包出来的`Flutter.framework release`包，过大。`xcrun bitcode_strip Flutter -r -o Flutter`移除`bitcode`代码
+- 打包出来的`Flutter.framework release`包，过大。`xcrun bitcode_strip Flutter -r -o Flutter`移除`bitcode`代码，本文已放入`move_file.sh`里处理。
+
+
+
+**老项目`flutter build` 可能报错**
+
+![QQ20210519-151530@2x](./image/QQ20210519-151530@2x.png)
+
+- 在`AndroidManifest.xml`里增加俩行
+
+```
+<meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+```
+
+![image-20210519183147039](./image/image-20210519183147039.png)
+
+- 或者如下错误，根据提示删除重跑就行了
+
+![QQ20210519-151613@2x](./image/QQ20210519-151613@2x.png)
