@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_module/HomePage.dart';
@@ -76,6 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    //AndroidView(viewType: 'plugins.hj/hjView')
+    Widget nativeView = (defaultTargetPlatform==TargetPlatform.iOS)?UiKitView(viewType: 'HJNativeView'):Container();
 
     return Scaffold(
       appBar: AppBar(
@@ -94,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            Container(child: nativeView,width: 80,height: 80,),
 
           RaisedButton(
             child: Text('去原生界面'),
