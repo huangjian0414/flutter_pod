@@ -39,3 +39,84 @@
 
 ### Android
 
+- 创建一个类，extends `PlatformViewFactory`,并实现方法
+
+```
+public class HJPlatformFactory extends PlatformViewFactory {
+
+    /**
+     * @param createArgsCodec the codec used to decode the args parameter of {@link #create}.
+     */
+    public HJPlatformFactory(MessageCodec<Object> createArgsCodec) {
+        super(createArgsCodec);
+    }
+
+    @Override
+    public PlatformView create(Context context, int viewId, Object args) {
+        return new HJActivity(context);
+    }
+}
+
+```
+
+- 创建一个类，implements `PlatformView`，在`getView`里返回视图
+
+```
+public class HJActivity implements PlatformView {
+
+    private final TextView myView;
+
+    HJActivity(Context context) {
+        TextView myView = new TextView(context);
+        myView.setText("Android-View");
+        this.myView = myView;
+    }
+    @Override
+    public View getView() {
+
+        return myView;
+    }
+
+    @Override
+    public void dispose() {
+
+    }
+}
+```
+
+- 创建插件类, implements `FlutterPlugin`
+
+```
+public class HJPlugin implements FlutterPlugin {
+
+
+    @Override
+    public void onAttachedToEngine(@NonNull @NotNull FlutterPlugin.FlutterPluginBinding binding) {
+
+        binding.getPlatformViewRegistry().registerViewFactory("plugins.hj/hjView", new HJPlatformFactory(StandardMessageCodec.INSTANCE));
+    }
+
+    @Override
+    public void onDetachedFromEngine(@NonNull @NotNull FlutterPlugin.FlutterPluginBinding binding) {
+
+    }
+
+}
+```
+
+- 注册
+
+```
+public class MainActivity extends FlutterActivity {
+    
+    @Override
+    public void configureFlutterEngine(@NonNull @NotNull FlutterEngine flutterEngine) {
+        super.configureFlutterEngine(flutterEngine);
+
+        flutterEngine.getPlugins().add(new HJPlugin());
+    }
+}
+```
+
+![image-20210730213549546](./image/image-20210730213549546.png)
+
